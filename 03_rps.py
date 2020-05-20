@@ -1,4 +1,4 @@
-# Yara Volodin 22/112019
+# Yara Volodin
 # Rock paper scissors
 from random import randint
 
@@ -18,10 +18,10 @@ def int_check(question, low, high):
             print("Invalid input")
 
 # create a list of play options
-t = ["Rock", "Paper", "Scissors"]
+t = ["Rock", "Paper", "Scissors", "R", "P", "S"]
 
 # assign a random play to the computer
-computer = t[randint(0, 2)]
+computer = t[randint(0, 5)]
 
 # set player to False
 player = False
@@ -43,47 +43,70 @@ while keep_going == "":
         # Start of the game
         while player is False:
 
-            # Tie
+            # Tie between user and Computer
 
             player = input("Rock, Paper, Scissors? ").capitalize()
+            print("Computer:", computer)
             if player == computer:
                 print("It's a tie, no one wins this round\n")
 
-            elif player == "Rock" or "R":
-                if computer == "Paper":
+            # Player plays rock
+            elif player == "Rock" or player == "R":
+
+                # Computer plays paper into rock (player loses round)
+                if computer == "Paper" or computer == "P":
                     bot_win_counter += 1
-                    print("{} beats {}, you lose (computer has {} points)\n".format(computer, player, bot_win_counter))
+                    print("{} beats rock, you lose (computer has {} points)\n"
+                          .format(computer, player, bot_win_counter))
+
+                # Computer plays scissors into rock and lose (player wins round)
                 else:
                     player_win_counter += 1
                     print("You win this round! You have {} points\n".format(player_win_counter))
 
-            elif player == "Paper" or "P":
-                if computer == "Scissors":
+            # Player plays Paper
+            elif player == "Paper" or player == "P":
+
+                # Computer plays scissors into paper (player loses round)
+                if computer == "Scissors" or computer == "S":
                     bot_win_counter += 1
-                    print("{} beat {}, you lose (computer has {} points)\n".format(computer, player, bot_win_counter))
+                    print("{} beat paper, you lose (computer has {} points)\n"
+                          .format(computer, player, bot_win_counter))
+
+                # Computer plays rock into paper and loses (player wins round)
                 else:
                     player_win_counter += 1
                     print("You win this round! You have {} Points\n".format(player_win_counter))
 
-            elif player == "Scissors" or "S":
-                if computer == "Rock":
+            # Player plays Scissors
+            elif player == "Scissors" or player == "S":
+
+                # Computer plays rock into scissors (player loses round)
+                if computer == "Rock" or computer == "R":
                     bot_win_counter += 1
-                    print("{} beats rock, you lose (computer has {} points)\n".format(computer, player, bot_win_counter))
+                    print("{} beats scissors, you lose (computer has {} points)\n"
+                          .format(computer, player, bot_win_counter))
+
+                # Computer plays paper into scissors and loses (player wins round)
                 else:
                     player_win_counter += 1
                     print("You win this round! You have {} points\n".format(player_win_counter))
 
+            # Invalid input error
             else:
-                print("Error!")
+                print("Error! Please enter: r, p, s (rock, paper, scissors) ")
 
-            # Says who won
+            # States winner of game
             if bot_win_counter == first_to_win:
                 print("Computer won by {}, you lost".format(bot_win_counter - player_win_counter))
             elif player_win_counter == first_to_win:
-                print("You won by {}, you lost".format(player_win_counter - bot_win_counter))
+                if player_win_counter - bot_win_counter == 1:
+                    print("You won by one point")
+                else:
+                    print("You won by {} points, computer you lost".format(player_win_counter - bot_win_counter))
 
         # Keeps the loop going until someone reaches the goal
         player = False
-        computer = t[randint(0, 2)]
+        computer = t[randint(0, 5)]
 
     keep_going = input("\nPush <enter> to play again or any key to stop ")
