@@ -71,7 +71,7 @@ while keep_going == "":
 
             # Tie between user and Computer
             if player == computer:
-                print("It's a tie, no one wins this round\n")
+                print("It's a tie, no one wins this round")
 
             # Player plays rock and compares it to computer choice
             elif player == "Rock" or player == "R":
@@ -90,9 +90,9 @@ while keep_going == "":
                 else:
                     player_win_counter += 1
                     if player_win_counter == 1:
-                        statement_look("You win, you have {} point".format(player_win_counter), "_")
+                        statement_look("You win, you have {} point".format(player_win_counter), "■")
                     else:
-                        statement_look("You win, you have {} points".format(player_win_counter), "_")
+                        statement_look("You win, you have {} points".format(player_win_counter), "■")
 
             # Player plays Paper and compares it to computer choice
             elif player == "Paper" or player == "P":
@@ -111,10 +111,10 @@ while keep_going == "":
                 else:
                     player_win_counter += 1
                     if player_win_counter == 1:
-                        statement_look("You win, you have {} point".format(player_win_counter), "_")
-                        statement_look("You win, you have {} point".format(player_win_counter), "_")
+                        statement_look("You win, you have {} point".format(player_win_counter), "■")
+                        statement_look("You win, you have {} point".format(player_win_counter), "■")
                     else:
-                        statement_look("You win, you have {} points".format(player_win_counter), "_")
+                        statement_look("You win, you have {} points".format(player_win_counter), "■")
 
             # Player plays Scissors and compares it to computer choice
             elif player == "Scissors" or player == "S":
@@ -133,12 +133,12 @@ while keep_going == "":
                 else:
                     player_win_counter += 1
                     if player_win_counter == 1:
-                        statement_look("You win, you have {} point".format(player_win_counter), "_")
+                        statement_look("You win, you have {} point".format(player_win_counter), "■")
                     else:
-                        statement_look("You win, you have {} points".format(player_win_counter), "_")
+                        statement_look("You win, you have {} points".format(player_win_counter), "■")
 
             # Prints score of player + computer
-            print("│You: {}\t│Computer: {} │".format(player_win_counter, bot_win_counter))
+            print("\n│You: {}\t│Computer: {} │".format(player_win_counter, bot_win_counter))
             print()
 
             # States winner of game
